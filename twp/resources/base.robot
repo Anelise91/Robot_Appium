@@ -1,6 +1,10 @@
+##Arquivo com configs usadas em todos os CT
+
 *** Settings ***    
 
-Library    AppiumLibrary
+Library     AppiumLibrary
+Library     libs/extend.py
+Resource    helpers.robot
 
 *** Keywords ***
 Open Session
@@ -12,14 +16,10 @@ Open Session
     ...                 deviceName=Emulator
     ...                 app=${EXECDIR}/app/twp.apk  
     ##EXECDIR var amb robot traz diretorio de execução do projeto
+    Get Started
+
 Close Session
+    Capture Page Screenshot
     Close Application
 
-Get Started  
-    Wait Until Page Contains        COMEÇAR    
-    Click Text                      COMEÇAR
-Open Nav
-    Wait Until Element Is Visible   xpath=//android.widget.ImageButton[@content-desc="Open navigation drawer"]    
-    
-    Click Element                    xpath=//android.widget.ImageButton[@content-desc="Open navigation drawer"]
-    Wait Until Element Is Visible    id=io.qaninja.android.twp:id/design_navigation_view  
+

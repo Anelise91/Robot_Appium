@@ -1,2 +1,6 @@
 logs/
 results/
+.idea/
+__pycache__
+
+
